@@ -1,184 +1,393 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kimiaki Yasui</title>
-  <link rel="stylesheet" href="styles.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Sacramentoフォントの追加 -->
-  <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>フルスクリーン 7ページ（Hero文字ループ付き）</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+
+    .wrap{
+      height:100vh;
+      overflow-y:auto;
+      scroll-snap-type:y mandatory;
+      -webkit-overflow-scrolling:touch;
+      scroll-behavior:smooth;
+      font-family: system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, meiryo, sans-serif;
+      background:white;
+      color:#111111;
+    }
+    /* ===== 中央から開くイントロ演出 ===== */
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  background: black;         /* イントロの背景色（好みで変更可） */
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  animation: openFromCenter 1.8s ease-in-out forwards;
+}
+
+@keyframes openFromCenter {
+  0% {
+    clip-path: inset(0 50% 0 50%); /* 真ん中からスタート */
+  }
+  100% {
+    clip-path: inset(0 0 0 0);     /* 全面表示 */
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* ロゴや文字を表示したい場合 */
+.intro-text {
+  color: white;
+  font-size: 2rem;
+  letter-spacing: 0.1em;
+  animation: fadeOutText 1.2s ease-in-out 0.8s forwards;
+}
+
+@keyframes fadeOutText {
+  to { opacity: 0; transform: scale(1.1); }
+}
+
+    section.page{
+      position:relative;
+      min-height:100vh;
+      height:100vh;
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      scroll-snap-align:start;
+    }
+    
+    .word{
+        position: absolute;
+        top:12%;
+        right: 10%;
+        left: 10%;
+    }
+    .word-2{
+        position: absolute;
+        top: 12%;
+        left: 10%;
+          text-align: left; /* ← 左揃えに変更 */
+    }
+    .word-3{
+        position: absolute;
+        top: 12%;
+        left: 5%;
+          text-align: left; /* ← 左揃えに変更 */
+    }
+    .page.hero{
+      background-position:center center;
+    }
+    .word-4{
+        position: absolute;
+        top: 12%;
+        left:5%;
+          text-align: left; /* ← 左揃えに変更 */
+    }
+    
+    .page.hero::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(rgba(246, 245, 245, 0.35));
+      z-index:1;
+    }
+
+    .hero .text{
+      position:relative;
+      z-index:2;
+      padding:1.25rem;
+      max-width:90%;
+      text-align:center;
+      backdrop-filter: blur(0.2px);
+    }
+
+    /* ===== Hero文字ループ ===== */
+    .hero h1 {
+      font-size:70px;
+      line-height:1.05;
+      font-weight:900;
+      letter-spacing:0.02em;
+      margin-bottom:0.4rem;
+      color: rgb(146, 213, 96);
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      z-index: 999;
+    }
+
+    .hero h1 span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll-text 15s linear infinite;
+    }
+    .messege{
+      position: absolute;
+      top: 5%;
+      left: 20%;
+      font-size: 40px;
+    }
+    .messege-2{
+      position: absolute;
+      top:15%;
+      left:10%;
+      font-size: 80px;
+      font-weight: bold;
+    }
+
+
+    @keyframes scroll-text {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* 背景画像 */
+    .hero .hero-image{
+      position:absolute;
+      top:45%;
+      left:50%;
+      transform:translate(-50%, -50%);
+      width: 35%;
+      height:auto;
+      object-fit:contain;
+      z-index:0;
+      filter:brightness(0.9);
+      pointer-events:none;
+    }
+    .scroll{
+      position: absolute;
+      top:80%;
+      font-size: 24px;
+    }
+    .marker{
+      position: absolute;
+      top: 90%;
+    
+      font-weight: bold;
+    }
+    /* 動画 */
+    .video-1, .video-2, .video-3 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 34%;
+      height: auto;
+      object-fit: contain;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+    .page.alt2 p{
+        position: absolute;
+        top: 20%;
+    .text{
+      position: flex;
+    }     
+        
+
+    }
+    .mail{
+      position: absolute;
+      top: 85%;
+      right: 60%;
+      font-size: small;
+      text-align: left;
+      left: 10%;
+    }
+
+    .text-2{
+      position: absolute;
+      top: 87%;
+      left:60%;
+      font-weight: small;
+
+
+}
+    .page img{
+      position: absolute;
+      width: 20%;
+      left:50%;
+      end:45%;
+    }
+    
  
-<meta name="viewport" content="width=1200">
-<!DOCTYPE html>
+    /* スマホ対応 */
+    @media (max-width:600px){
+      .hero h1 { font-size:2rem; }
+      .hero h1 span { animation-duration:10s; }
+      .hero .hero-image{width:55%;}
+      .video-1, .video-2, .video-3 { width:70%; }
+      .dots{right:8px;}
+    }
+  .page img{
+    width: 69%;
+    position: absolute;
+    left:4%;
+    end:20%;
+  }
+  .dots {
+  position: fixed;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 4px;
+}
+
+.dot {
+  font-size: 14px;
+  color: rgba(11, 11, 11, 0.6);
+  cursor: pointer;
+  transition: transform .18s, color .18s;
+}
+
+.dot.active {
+  transform: scale(1.3);
+  color: rgb(241, 235, 235);
+}
+
+    .page.alt{background:linear-gradient(180deg, #0b0000, #f2f1f1);}
+    .page.alt3{background:linear-gradient(180deg, #0b0000, #f2f1f1);}
+    .page.alt2{background:linear-gradient(180deg, #fffdfd, #f7f8f9)}
+    .page.alt4{background:linear-gradient(180deg, #fffdfd, #f7f8f9)}
+    .content-box{
+      padding:1.25rem;
+      max-width:900px;
+      text-align:center;
+    }
+   /* --- PC表示（幅900px以上）のとき、画像を小さく --- */
+@media (min-width: 900px) {
+  .page img {
+    width: 28%;           /* ← PCでの画像サイズを小さく調整 */
+    left: 50%;
+    transform: translateX(-50%); /* 中央寄せ（必要に応じて削除OK） */
+  }
+}
+
+  </style>
 </head>
 <body>
-  
-  <header>
-    <h1>Imagination</h1>
-    <p class="subtitle">A short description for social media</p>
-  </header>
-
-
+  <div class="intro-overlay">
+    <div class="intro-text"></div>
   </div>
-</div>
 
-  <section class="hero">
-   
-  </section>
+  <div class="wrap" id="wrap">
 
-  
+    <section class="page hero" id="page-1" aria-label="トップページ">
+        <p class="word">From the silent depths beyond our skies,<br>
+A whisper drifts where starlight <br>dies.
+Through endless voids and<br> cosmic streams,
+It travels here <br>on threads of dreams.</p>
+      <img class="hero-image" src="mono.jpg" alt="背景画像（差し替えてください）" />
+      <div class="text">
+        <h1><span>The image loops</span></h1>
+      </div>
+      <p class="scroll">scroll</p>
+      <p class="marker">↓</p>
+    </section>
 
-  <section class="creation-section">
-    <div class="creation-button"><a href="3d.html">creation!</a></div>
-  </section>
-  <h2 class="change">ART IN DAY LIFE</h2>
+    <section class="page alt3" id="page-2">
+      <div class="content-box">
+        <h1>O1</h1>
+        <p>True transformation begins when you start refining every aspect of your life—mind, body, environment, and relationships</p>
+      </div>
+    </section>
 
-  <section class="content-section">
-    <div class="image-block">
-        <a href="works.html" ><div class="overlay"></div></a>
-        <div class="box"><img src="water.jpg" alt="Water"class=feed-in></div>
+    <section class="page alt4" id="page-3">
+      <div class="content-box">
+        <p class="word-2">Morning light spills across the floor,
+Soft <br>amber glows through the open door.<br>
+Coffee steams in gentle swirls,<br>
+A quiet start as the day unfurls.</p>
+        <h2>ページ 3</h2>
+        <video src="fashon-1.mp4" class="video-1" autoplay muted loop playsinline></video>
+      </div>
+    </section>
+
+    <section class="page alt" id="page-4">
+      <div class="content-box">
+        <h1>02</h1>
+        <p>Enter a dynamic world</p>
+      </div>
+    </section>
+
+    <section class="page alt4" id="page-5">
+      <div class="content-box">
+        <P class="word-3">Echoes of the past resonate in every scene<br>
+Modern voices drift through<br> the antique air<br>
+Whispers of bygone days linger everywhere.</P>
+        <h2>ページ 5</h2>
+        <video src="fashon.mp4" class="video-2" autoplay muted loop playsinline></video>
+      </div>
+    </section>
+
+    <section class="page alt2" id="page-6">
+      <div class="content-box">
+      
+        <p class="word-4">When weary feet begin to slow,
+           Take a breath<br>let your heart<br> rest a while
+           And then, guided by your heart,
+           Let’s wander off to a café.</p>
+        <h2>ページ 6</h2>
+        <video src="in cafe-1.mp4" class="video-3" autoplay muted loop playsinline></video>
+      </div>
+    </section>
+
+    <section class="page" id="page-7">
+      <div class="content-box">
+        <img src="hukei.jpg">
        
+        <p class="messege-2">IN side</p>
+        <div class="text"><p class="mail"> mail </p>
+          <p class="text-2"> contents by <br>kento utsbo</p>
+        </div>
         
-        <p class="fade-in-on-scroll">Water<br>
-          The wind swayed the trees <br>and a quiet moment enveloped my body<br>
-          風が木々を揺らし、静かな時間が体を包んだ。</p>
-    </div>
-    
-
-
-    <div class="image-block-1">
-        <p class="fade-in-on-scroll">Subway<br>
-          The half-asleep city slowly awakens to the rhythm of the subway<br>
-          半分眠ったままの街が、地下鉄のリズムに合わせて少しずつ目を覚ましていく。</p>
-      <a href="works-2.html" >
-      <div class="overlay-1"></div></a>
-      <img src="subway.jpg" alt="Subway"class=feed-in>
-      
-    </div>
-
-   <!-- ...既存のコード... -->
-<div class="bar">
-  <span>Exquisite artworks&nbsp;&nbsp;Art in everyday life&nbsp;&nbsp;Forever&nbsp;&nbsp;Exquisite artworks&nbsp;&nbsp;</span>
-</div>
-<!-- ...既存のコード... -->
-  
-    
-      
-    </div>
-    <!-- <div class="image-block-3">
-     
-  
-      <div class="overlay-3"></div></a>
-      <img src="tree.jpg" alt="Tree"class=feed-in>
-       
-<video width="200" height="300" controls>
-  <source src="tree.mp4" type="video/mp4">
-  お使いのブラウザは動画タグに対応していません。
-</video>
-      <p class="fade-in-on-scroll">Tree<br>
-        The shadows of the street trees sway gently
-      揺れる街路樹の影がゆっくり揺れる</p>
-    
-      
-    </div> -->
-    <div class="image-block-3">
-  <img src="tree.jpg" alt="説明画像">
-
-  <div class="video-text-container">
-    
-    <h2>the passage of time</h2>
-    <p class="fade-in-on-scroll">Tree <br>The shadows of the street trees sway gently<br>
-    揺れる街路樹の影がゆっくり揺れる</p>
+      </div>
+    </section>
   </div>
+
+  <div class="dots" id="dots">
+  <div class="dot active" data-target="page-1">●</div>
+  <div class="dot" data-target="page-2">●</div>
+  <div class="dot" data-target="page-3">●</div>
+  <div class="dot" data-target="page-4">●</div>
+  <div class="dot" data-target="page-5">●</div>
+  <div class="dot" data-target="page-6">●</div>
+  <div class="dot" data-target="page-7">●</div>
 </div>
-<div class="video">
-<video src="art.mp4"loop muted playsinline autoplay></video>
-</div>
 
 
-    <h2 class="text">Welcome to a creative world</h2>
+  <script>
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach(d=> d.addEventListener('click', ()=>{
+      const id = d.dataset.target;
+      document.getElementById(id).scrollIntoView({behavior:'smooth'});
+    }));
 
-    <hr>
-
-    <div class="image-block-4">
-          <p class="fade-in-on-scroll">Musium<br>
-            In a corner of the museum, my steps came to a halt before a single artwork<br>
-            美術館の片隅、ひとつの作品の前で足が止まった。</p>
-      <img src="a-to.jpg"alt="Kitchen"class=feed-in>
-      <a href="works-4.html" ><div class="overlay-4"></div></a>
-   
-    </div>
-  </section>
-
-<footer><p>Just like the weather</p></footer>
-  
-</body>
-</html>
-<script>
-  window.addEventListener('scroll', function () {
-    const target = document.querySelector('.change');
-    const scrollY = window.scrollY;
-
-    // 表示するスクロール位置の範囲（例：300px〜800px の間だけ表示）
-    if (scrollY > 300 && scrollY < 700) {
-      target.classList.add('visible');
-    } else {
-      target.classList.remove('visible');
-    }
-    
-  });
-  window.addEventListener('scroll', function() {
-  const targets = document.querySelectorAll('.fade-in-on-scroll');
-  const windowHeight = window.innerHeight;
-
-  targets.forEach(target => {
-    const rect = target.getBoundingClientRect();
-
-    // 要素の上端がウィンドウの下端より上（画面内に入ったか）を判定
-    if (rect.top < windowHeight && rect.bottom > 0) {
-      target.classList.add('visible');
-    } else {
-      target.classList.remove('visible');
-    }
-  });
-});
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const fadeElems = document.querySelectorAll('.fade-in-on-scroll');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+    const pages = document.querySelectorAll('section.page');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          const id = entry.target.id;
+          document.querySelectorAll('.dot').forEach(dot=>dot.classList.toggle('active', dot.dataset.target===id));
         }
       });
-    }, {
-      threshold: 0.1
-    });
+    }, {threshold:0.6});
+    pages.forEach(p=>io.observe(p));
+  </script>
 
-    fadeElems.forEach(elem => {
-      observer.observe(elem);
-    });
-  });
-  document.addEventListener("DOMContentLoaded", () => {
-  const targets = document.querySelectorAll(
-    ".image-block img, .image-block-1 img, .image-block-2 img, .image-block-3 img, .image-block-4 img, .fade-in-on-scroll"
-  );
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      }
-    });
-  }, { threshold: 0.1 });
-
-  targets.forEach(target => observer.observe(target));
-});
-
-</script>
-
-
-
+</body>
+</html>
 
