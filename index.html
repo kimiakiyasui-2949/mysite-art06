@@ -1,393 +1,319 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>フルスクリーン 7ページ（Hero文字ループ付き）</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
   <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-
-    .wrap{
-      height:100vh;
-      overflow-y:auto;
-      scroll-snap-type:y mandatory;
-      -webkit-overflow-scrolling:touch;
-      scroll-behavior:smooth;
-      font-family: system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, meiryo, sans-serif;
-      background:white;
-      color:#111111;
+    body {
+      margin: 0;
+      padding: 0;
+      background-color:#e3ddd0
     }
-    /* ===== 中央から開くイントロ演出 ===== */
-.intro-overlay {
+    #intro {
   position: fixed;
-  inset: 0;
-  background: black;         /* イントロの背景色（好みで変更可） */
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  animation: openFromCenter 1.8s ease-in-out forwards;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  z-index: 9999; /* 最前面 */
+  opacity: 1;
+  transition: opacity 2s ease; /* フェードアウト時間 */
+}
+#intro.fade-out {
+  opacity: 0;
+  pointer-events: none; /* フェードアウト後にクリックなどをブロックしない */
+}
+.text-9{
+  color: aliceblue;
+  text-align: center;
 }
 
-@keyframes openFromCenter {
+
+    header {
+      background-color: rgb(26, 25, 25);
+      padding: 20px;
+      text-align: right;
+      color: azure;
+    }
+
+    .text-2 {
+      position: relative;
+    }
+    section hr {
+  border: none;
+  height: 2px;
+  background-color: black;
+  width: 0; /* 初期は幅0 */
+  transition: width 1s ease-out;
+  margin: 50px 0;
+}
+
+    .video {
+      width: 100vw;
+    }
+
+    .text {
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      opacity: 0.6;
+      padding: 0;
+      color: rgb(7, 7, 7);
+      font-size: 160px;
+      font-weight: bold;
+      font-family: "DM Serif Display", serif;
+      animation: rotateText 8s linear infinite;
+    }
+         
+@keyframes lineFlow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}     /* ← 線の長さを指定 */
+
+
+    @keyframes rotateText {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    h1 {
+      text-align: left;
+      font-size: 60px;
+      font-family: "DM Serif Display", serif;
+      transform: translateY(30px);
+      animation: fadeInUp 3.0s ease-out forwards;
+      animation-timeline: view();
+    animation-range: entry 0% cover 50%;
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    section img {
+  width: 360px;
+  padding: 30px;
+  opacity: 0;
+  transform: translateY(50px); /* 下から浮き出すイメージ */
+  transition: opacity 1.9s ease-out, transform 1.9s ease-out;
+}
+
+section img.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+    
+    @keyframes slideIn {
+      0% { opacity: 0; transform: translateX(-50px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    /* --- 左端から右へ流れる <hr> --- */
+   
+
+  
+
+    .text-4 {
+      text-align: center;
+    }
+
+    .text-4 p {
+  font-size: 100px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  color: rgb(9, 9, 9);
+  white-space: nowrap; /* 改行しない */
+  position: relative;
+  animation: moveLeft 13s linear infinite; /* ループアニメーション */
+}
+
+@keyframes moveLeft {
   0% {
-    clip-path: inset(0 50% 0 50%); /* 真ん中からスタート */
+    transform: translateX(100vw); /* 右端からスタート */
   }
   100% {
-    clip-path: inset(0 0 0 0);     /* 全面表示 */
-    opacity: 0;
-    visibility: hidden;
+    transform: translateX(-100%); /* 左端まで移動 */
   }
 }
-
-/* ロゴや文字を表示したい場合 */
-.intro-text {
-  color: white;
-  font-size: 2rem;
-  letter-spacing: 0.1em;
-  animation: fadeOutText 1.2s ease-in-out 0.8s forwards;
+    .whether {
+  width: 100%;
+  display: flex;          /* 横並びにする */
+  align-items: center;    /* 高さ中央揃え */
+  text-align: left;
+  width: 100%;
+  padding: 20px;
+  gap: 20px;              /* ビデオとテキストの間隔 */
 }
 
-@keyframes fadeOutText {
-  to { opacity: 0; transform: scale(1.1); }
+.whether .photo {
+  width: 26%;             /* ビデオの幅 */
+}
+.photo-2{
+  width:30%
 }
 
-    section.page{
-      position:relative;
-      min-height:100vh;
-      height:100vh;
-      width:100%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      scroll-snap-align:start;
-    }
-    
-    .word{
-        position: absolute;
-        top:12%;
-        right: 10%;
-        left: 10%;
-    }
-    .word-2{
-        position: absolute;
-        top: 12%;
-        left: 10%;
-          text-align: left; /* ← 左揃えに変更 */
-    }
-    .word-3{
-        position: absolute;
-        top: 12%;
-        left: 5%;
-          text-align: left; /* ← 左揃えに変更 */
-    }
-    .page.hero{
-      background-position:center center;
-    }
-    .word-4{
-        position: absolute;
-        top: 12%;
-        left:5%;
-          text-align: left; /* ← 左揃えに変更 */
-    }
-    
-    .page.hero::before{
-      content:'';
-      position:absolute;
-      inset:0;
-      background:linear-gradient(rgba(246, 245, 245, 0.35));
-      z-index:1;
-    }
+.whether p {
+  position: absolute;
+  left:34%; 
+  padding-top: 290px;   /* absolute は不要 */
+  font-size: 21px;
+  font-family: "DM Serif Display", serif;
 
-    .hero .text{
-      position:relative;
-      z-index:2;
-      padding:1.25rem;
-      max-width:90%;
-      text-align:center;
-      backdrop-filter: blur(0.2px);
-    }
+}
+h1:hover{
+  color: chocolate;
+}
 
-    /* ===== Hero文字ループ ===== */
-    .hero h1 {
-      font-size:70px;
-      line-height:1.05;
-      font-weight:900;
-      letter-spacing:0.02em;
-      margin-bottom:0.4rem;
-      color: rgb(146, 213, 96);
-      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      
-      overflow: hidden;
-      white-space: nowrap;
-      position: relative;
-      z-index: 999;
-    }
+  .text-5 h1{
+    padding: 29px;
+  }
 
-    .hero h1 span {
-      display: inline-block;
-      padding-left: 100%;
-      animation: scroll-text 15s linear infinite;
-    }
-    .messege{
-      position: absolute;
-      top: 5%;
-      left: 20%;
-      font-size: 40px;
-    }
-    .messege-2{
-      position: absolute;
-      top:15%;
-      left:10%;
-      font-size: 80px;
-      font-weight: bold;
-    }
-
-
-    @keyframes scroll-text {
-      0% { transform: translateX(0%); }
-      100% { transform: translateX(-100%); }
-    }
-
-    /* 背景画像 */
-    .hero .hero-image{
-      position:absolute;
-      top:45%;
-      left:50%;
-      transform:translate(-50%, -50%);
-      width: 35%;
-      height:auto;
-      object-fit:contain;
-      z-index:0;
-      filter:brightness(0.9);
-      pointer-events:none;
-    }
-    .scroll{
-      position: absolute;
-      top:80%;
-      font-size: 24px;
-    }
-    .marker{
-      position: absolute;
-      top: 90%;
-    
-      font-weight: bold;
-    }
-    /* 動画 */
-    .video-1, .video-2, .video-3 {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 34%;
-      height: auto;
-      object-fit: contain;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-    }
-    .page.alt2 p{
-        position: absolute;
-        top: 20%;
-    .text{
-      position: flex;
-    }     
-        
-
-    }
-    .mail{
-      position: absolute;
-      top: 85%;
-      right: 60%;
-      font-size: small;
+    footer {
+      background-color: rgb(37, 35, 32);
       text-align: left;
-      left: 10%;
+      padding: 150px;
+      color: aliceblue;
+      font-size: 12px;
+    }
+    .text-6{
+      text-align: left;
+      font-size: 20px;
     }
 
-    .text-2{
-      position: absolute;
-      top: 87%;
-      left:60%;
-      font-weight: small;
-
+    @media (max-width: 760px) {
+      header{
+        padding:10px;
+        font-size: 12px;
+      }
+      .text { font-size: 40px; }
+      h1 { font-size: 15px; text-align: center; }
+      section img { width: 100px; padding: 0; }
+      .text-4 p { font-size: 40px; }
+      footer { padding: 60px; }
+      .whether p {
+  position: absolute;
+  left:36%; 
+  padding-top: 46px;   /* absolute は不要 */
+  font-size: 8px;
+  font-weight: bold;
+  font-family: "DM Serif Display", serif;
 
 }
-    .page img{
-      position: absolute;
-      width: 20%;
-      left:50%;
-      end:45%;
+ footer {
+      background-color: rgb(37, 35, 32);
+      text-align: left;
+      padding: 40px;
+      color: aliceblue;
+      font-size: 3px;
     }
-    
- 
-    /* スマホ対応 */
-    @media (max-width:600px){
-      .hero h1 { font-size:2rem; }
-      .hero h1 span { animation-duration:10s; }
-      .hero .hero-image{width:55%;}
-      .video-1, .video-2, .video-3 { width:70%; }
-      .dots{right:8px;}
+    .text-6{
+      font-size: 12px;;
+
     }
-  .page img{
-    width: 69%;
-    position: absolute;
-    left:4%;
-    end:20%;
-  }
-  .dots {
-  position: fixed;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 30;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 4px;
-}
-
-.dot {
-  font-size: 14px;
-  color: rgba(11, 11, 11, 0.6);
-  cursor: pointer;
-  transition: transform .18s, color .18s;
-}
-
-.dot.active {
-  transform: scale(1.3);
-  color: rgb(241, 235, 235);
-}
-
-    .page.alt{background:linear-gradient(180deg, #0b0000, #f2f1f1);}
-    .page.alt3{background:linear-gradient(180deg, #0b0000, #f2f1f1);}
-    .page.alt2{background:linear-gradient(180deg, #fffdfd, #f7f8f9)}
-    .page.alt4{background:linear-gradient(180deg, #fffdfd, #f7f8f9)}
-    .content-box{
-      padding:1.25rem;
-      max-width:900px;
-      text-align:center;
     }
-   /* --- PC表示（幅900px以上）のとき、画像を小さく --- */
-@media (min-width: 900px) {
-  .page img {
-    width: 28%;           /* ← PCでの画像サイズを小さく調整 */
-    left: 50%;
-    transform: translateX(-50%); /* 中央寄せ（必要に応じて削除OK） */
-  }
-}
-
   </style>
 </head>
 <body>
-  <div class="intro-overlay">
-    <div class="intro-text"></div>
+   <div id="intro"><p class="text-9">intro</p></div> <!-- イントロ用 -->
+  <header>works</header>
+  
+
+  <section class="text-2">
+    <video src="fashon.mp4" autoplay muted loop class="video"></video>
+    <p class="text">imagine</p>
+  </section>
+
+  <section>
+    <h1>Style is a way to say who you are before you speak</h1>
+    <hr>
+    <h1>Beauty begins the moment you embrace yourself</h1>
+    <hr>
+    <h1>Seven moments of surprise unfolded on the street.</h1>
+    <hr>
+    <img src="kyoto.jpg">
+    <img src="mono.jpg">
+    <img src="street3.jpg">
+    <img src="aunt.jpg">
+  </section>
+
+  <section class="text-4">
+    <p>Pointless moments</p>
+  </section>
+
+  <div class="whether">
+    <video src="fashon-1.mp4" autoplay muted loop class="photo"></video>
+    <img src="show.jpg" class="photo-2">
+    <p> 01 sound garden</p>
+    
   </div>
 
-  <div class="wrap" id="wrap">
+  <section class="text-5">
+    <h1>Style is a way to say who you are before you speak</h1>
+    <hr>
+    <h1>Beauty begins the moment you embrace yourself</h1>
+    <hr>
+    <h1>Seven moments of surprise unfolded on the street.</h1>
+    <hr>
+  </section>
 
-    <section class="page hero" id="page-1" aria-label="トップページ">
-        <p class="word">From the silent depths beyond our skies,<br>
-A whisper drifts where starlight <br>dies.
-Through endless voids and<br> cosmic streams,
-It travels here <br>on threads of dreams.</p>
-      <img class="hero-image" src="mono.jpg" alt="背景画像（差し替えてください）" />
-      <div class="text">
-        <h1><span>The image loops</span></h1>
-      </div>
-      <p class="scroll">scroll</p>
-      <p class="marker">↓</p>
-    </section>
-
-    <section class="page alt3" id="page-2">
-      <div class="content-box">
-        <h1>O1</h1>
-        <p>True transformation begins when you start refining every aspect of your life—mind, body, environment, and relationships</p>
-      </div>
-    </section>
-
-    <section class="page alt4" id="page-3">
-      <div class="content-box">
-        <p class="word-2">Morning light spills across the floor,
-Soft <br>amber glows through the open door.<br>
-Coffee steams in gentle swirls,<br>
-A quiet start as the day unfurls.</p>
-        <h2>ページ 3</h2>
-        <video src="fashon-1.mp4" class="video-1" autoplay muted loop playsinline></video>
-      </div>
-    </section>
-
-    <section class="page alt" id="page-4">
-      <div class="content-box">
-        <h1>02</h1>
-        <p>Enter a dynamic world</p>
-      </div>
-    </section>
-
-    <section class="page alt4" id="page-5">
-      <div class="content-box">
-        <P class="word-3">Echoes of the past resonate in every scene<br>
-Modern voices drift through<br> the antique air<br>
-Whispers of bygone days linger everywhere.</P>
-        <h2>ページ 5</h2>
-        <video src="fashon.mp4" class="video-2" autoplay muted loop playsinline></video>
-      </div>
-    </section>
-
-    <section class="page alt2" id="page-6">
-      <div class="content-box">
-      
-        <p class="word-4">When weary feet begin to slow,
-           Take a breath<br>let your heart<br> rest a while
-           And then, guided by your heart,
-           Let’s wander off to a café.</p>
-        <h2>ページ 6</h2>
-        <video src="in cafe-1.mp4" class="video-3" autoplay muted loop playsinline></video>
-      </div>
-    </section>
-
-    <section class="page" id="page-7">
-      <div class="content-box">
-        <img src="hukei.jpg">
-       
-        <p class="messege-2">IN side</p>
-        <div class="text"><p class="mail"> mail </p>
-          <p class="text-2"> contents by <br>kento utsbo</p>
-        </div>
-        
-      </div>
-    </section>
-  </div>
-
-  <div class="dots" id="dots">
-  <div class="dot active" data-target="page-1">●</div>
-  <div class="dot" data-target="page-2">●</div>
-  <div class="dot" data-target="page-3">●</div>
-  <div class="dot" data-target="page-4">●</div>
-  <div class="dot" data-target="page-5">●</div>
-  <div class="dot" data-target="page-6">●</div>
-  <div class="dot" data-target="page-7">●</div>
-</div>
-
-
+  <footer>
+    <p class="text-6"> 01 position</p>
+    <p>kimiaki yasui</p>
+    <p>imagination skill and intersting about sky</p>
+  </footer>
   <script>
-    const dots = document.querySelectorAll('.dot');
-    dots.forEach(d=> d.addEventListener('click', ()=>{
-      const id = d.dataset.target;
-      document.getElementById(id).scrollIntoView({behavior:'smooth'});
-    }));
+  const hrs = document.querySelectorAll("section hr");
 
-    const pages = document.querySelectorAll('section.page');
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          const id = entry.target.id;
-          document.querySelectorAll('.dot').forEach(dot=>dot.classList.toggle('active', dot.dataset.target===id));
-        }
-      });
-    }, {threshold:0.6});
-    pages.forEach(p=>io.observe(p));
-  </script>
+  const animateHr = () => {
+    hrs.forEach(hr => {
+      const rect = hr.getBoundingClientRect();
+      if(rect.top < window.innerHeight * 0.8){ // hr が画面内に近づいたら
+        hr.style.width = "94%";
+      }
+    });
+  }
+
+  window.addEventListener("scroll", animateHr);
+  window.addEventListener("load", animateHr);
+
+
+const images = document.querySelectorAll("section img");
+
+const animateImages = () => {
+  images.forEach((img, index) => {
+    const rect = img.getBoundingClientRect();
+    if(rect.top < window.innerHeight * 0.85 && !img.classList.contains("visible")){
+      // 遅延をつける
+      setTimeout(() => {
+        img.classList.add("visible");
+      }, index * 300); // 0.3秒ずつずらす
+    }
+  });
+}
+
+window.addEventListener("scroll", animateImages);
+window.addEventListener("load", animateImages);
+
+window.addEventListener("load", () => {
+  const intro = document.getElementById("intro");
+  // 少し遅らせてフェードアウトさせる場合は setTimeout
+  setTimeout(() => {
+    intro.classList.add("fade-out");
+  }, 500); // 0.5秒後にフェードアウト開始
+});
+
+
+</script>
+
+
+
+
+
 
 </body>
 </html>
-
