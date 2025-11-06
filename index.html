@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-    body {
+   html, body {
       margin: 0;
       padding: 0;
       background-color:#e3ddd0
+      
     }
     #intro {
   position: fixed;
@@ -36,7 +37,9 @@
       padding: 20px;
       text-align: right;
       color: azure;
+      
     }
+    
 
     .text-2 {
       position: relative;
@@ -53,6 +56,91 @@
     .video {
       width: 100vw;
     }
+    /* ------------------------------
+   ハンバーガーメニュー
+------------------------------ */
+
+/* 三本線（右上） */
+.hamburger {
+  font-size: 32px;
+  cursor: pointer;
+  color: white;
+  position: absolute;
+  top: 22px;
+  right: 25px;
+  z-index: 9999;
+  transition: opacity .4s ease;
+}
+
+/* メニュー全体（最初は隠れてる） */
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(20,20,20,0.96);
+  color: white;
+  opacity: 0;
+  transform: translateY(40px);
+  pointer-events: none;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  z-index: 9998;
+  padding-top: 100px;
+}
+
+/* 浮かび上がる状態 */
+.menu.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* メニュー開いたら三本線を消す */
+header.menu-open .hamburger {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 閉じる × */
+.close-btn {
+  position: absolute;
+  top: 25px;
+  right: 60px;
+  font-size: 50px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* メニュー内リンク */
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 30 0;
+  text-align: left;
+  margin-left: 26px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 28px;
+  font-family: "DM Serif Display", serif;
+}
+/* ハンバーガーメニュー内の hr を伸ばす */
+.menu hr {
+  border: none;
+  height: 1px;
+  background-color: white;
+  width: 0;                 /* 初期幅 0 */
+  transition: width 0.8s ease-out;
+  margin: 20px 0;
+}
+
+
+
 
     .text {
       position: absolute;
@@ -93,12 +181,12 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    section img {
+ section img {
   width: 360px;
   padding: 30px;
   opacity: 0;
-  transform: translateY(50px); /* 下から浮き出すイメージ */
-  transition: opacity 1.9s ease-out, transform 1.9s ease-out;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 1.8s ease-out;
 }
 
 section img.visible {
@@ -165,13 +253,23 @@ section img.visible {
   font-family: "DM Serif Display", serif;
 
 }
-h1:hover{
-  color: chocolate;
+h1 {
+  transition: color 1.5s ease; /* なめらかに色が変わる */
+  color: #111;
 }
+
+h1.scrolled {
+  color: #dec318; /* 好きな色に変更 */
+}
+
 
   .text-5 h1{
     padding: 29px;
   }
+h1:hover{
+  color: chocolate;
+
+}
 
     footer {
       background-color: rgb(37, 35, 32);
@@ -188,8 +286,23 @@ h1:hover{
     @media (max-width: 760px) {
       header{
         padding:10px;
-        font-size: 12px;
+        font-size: 5px;
       }
+      .menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 30 0;
+  text-align: left;
+  margin-left: 26px;
+}
+
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 28px;
+  font-family: "DM Serif Display", serif;
+}
       .text { font-size: 40px; }
       h1 { font-size: 15px; text-align: center; }
       section img { width: 100px; padding: 0; }
@@ -220,13 +333,34 @@ h1:hover{
 </head>
 <body>
    <div id="intro"><p class="text-9">intro</p></div> <!-- イントロ用 -->
-  <header>works</header>
+   <!-- ハンバーガーメニュー -->
+<div class="menu" id="menu">
+  <button class="close-btn" id="closeBtn">×</button>
+  <ul>
+    <li><a href="#">TOP</a></li>
+    <hr>
+    <li><a href="#">WORKS</a></li>
+    <hr>
+    <li><a href="#">ABOUT</a></li>
+    <hr>
+    <li><a href="#">CONTACT</a></li>
+    <hr>
+  </ul>
+</div>
+
+   <header>
+ 
+  <div class="hamburger" id="hamburger">☰</div>
+</header>
+
+  
   
 
   <section class="text-2">
     <video src="fashon.mp4" autoplay muted loop class="video"></video>
     <p class="text">imagine</p>
   </section>
+  
 
   <section>
     <h1>Style is a way to say who you are before you speak</h1>
@@ -266,22 +400,26 @@ h1:hover{
     <p>kimiaki yasui</p>
     <p>imagination skill and intersting about sky</p>
   </footer>
-  <script>
-  const hrs = document.querySelectorAll("section hr");
+ <script>
+// ===== hr のアニメーション =====
+const hrs = document.querySelectorAll("section hr");
 
-  const animateHr = () => {
-    hrs.forEach(hr => {
-      const rect = hr.getBoundingClientRect();
-      if(rect.top < window.innerHeight * 0.8){ // hr が画面内に近づいたら
-        hr.style.width = "94%";
-      }
-    });
-  }
+const hrObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.width = "94%";
+      hrObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  rootMargin: "0px 0px -20% 0px",
+  threshold: 0
+});
 
-  window.addEventListener("scroll", animateHr);
-  window.addEventListener("load", animateHr);
+hrs.forEach(hr => hrObserver.observe(hr));
 
 
+// ===== 画像フェードイン（section + whether） =====
 const images = document.querySelectorAll("section img");
 
 const animateImages = () => {
@@ -299,18 +437,55 @@ const animateImages = () => {
 window.addEventListener("scroll", animateImages);
 window.addEventListener("load", animateImages);
 
+
+// ===== intro フェードアウト =====
 window.addEventListener("load", () => {
   const intro = document.getElementById("intro");
-  // 少し遅らせてフェードアウトさせる場合は setTimeout
   setTimeout(() => {
     intro.classList.add("fade-out");
-  }, 500); // 0.5秒後にフェードアウト開始
+  }, 500);
+});
+// ===== ハンバーガーメニュー =====
+const hamburger = document.getElementById("hamburger");
+const menu = document.getElementById("menu");
+const closeBtn = document.getElementById("closeBtn");
+const header = document.querySelector("header");
+
+// ▶ 開く
+hamburger.addEventListener("click", () => {
+  menu.classList.add("active");
+  header.classList.add("menu-open");
+});
+
+// ▶ 閉じる
+closeBtn.addEventListener("click", () => {
+  menu.classList.remove("active");
+  header.classList.remove("menu-open");
+});
+// ▶ 開く
+hamburger.addEventListener("click", () => {
+  menu.classList.add("active");
+  header.classList.add("menu-open");
+
+  // hr を左→右へ伸ばす
+  document.querySelectorAll(".menu hr").forEach((hr) => {
+    hr.style.width = "50%";
+  });
+});
+
+// ▶ 閉じる
+closeBtn.addEventListener("click", () => {
+  menu.classList.remove("active");
+  header.classList.remove("menu-open");
+
+  // 閉じたら幅を戻す
+  document.querySelectorAll(".menu hr").forEach((hr) => {
+    hr.style.width = "0";
+  });
 });
 
 
 </script>
-
-
 
 
 
