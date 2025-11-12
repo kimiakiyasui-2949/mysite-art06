@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<title>Portfolio</title>
+<body>
+<header>
+  <div id="hamburger" class="hamburger">☰</div>
+  <nav id="menu" class="menu">
+    <div id="closeBtn" class="close-btn">×</div>
+    <ul>
+      <li><a href="index.html">HOME</a></li><hr>
+       <li><a href="works.html">ABOUT</a></li><hr>
+  
+    </ul>
+  </nav>
+</header>
+<section class="page">
+    <p class="text-1">suddenly</p>
+    <p class="text-2">blue sky and red sky <br>information infomation</p>
+    <p class="text-3">It was an ordinary day, and I was going about my usual routine when <br>all of a sudden, something completely unexpected happened<br>I was taken by surprise, and for a moment<br>I couldn’t believe what was unfolding before my eyes.</p>
+    <img src="river.jpg" class="river">
+    <img src="street.jpg" class="street">
+</section>
+<section class="page2">
+    <h1 class="typewriter"> 
+        continue<br>
+        position leftside<br>
+        nature and sun<br>
+        suddonly happened nowadays<br>
+        contrast<br>
+    </h1>
+    <img src="old woman.jpg" class="subway">
+    <!-- <img src="New York6.jpg"class="newyork"> -->
+</section>
+
+<section class="page3">
+  <p id="target" class="text-5">
+Aging is a universal process that begins the moment we are born, and no one is exempt from it.
+Our bodies gradually change—our skin, our strength, and even our memories—shaped by time in ways we cannot control.
+
+  </p>
+
+  <video src="in cafe.mp4" loop muted autoplay class="incafe"></video>
+</section>
+<footer> <p class="text-6">01 position</p>
+  <p>kimiaki yasui</p>
+  <p>imagination skill and intersting about sky</p></footer>
+<style>
+  html,body{
+    padding: 0;
+    margin: 0;
+  }
+    /* 三本線ハンバーガー */
+.hamburger {
+  font-size: 32px;
+  cursor: pointer;
+  position: absolute; top: 22px; right: 25px;
+  opacity: 1;
+  transition: opacity .6s ease;
+  z-index: 9999;
+}
+header {
+  background-color: #1a1919;
+  padding: 40px;
+  text-align: right;
+  position: relative;
+  color: white;
+}
+/* ===== メニュー ===== */
+.menu {
+  position: fixed; top: 0; left: 0;
+  width: 100%; height: 100vh;
+  background: rgba(20,20,20,0.96);
+  color: white;
+  opacity: 0; transform: translateY(40px);
+  pointer-events: none; transition: .6s ease;
+  padding-top: 100px; z-index: 9998;
+}
+.menu.active {
+  opacity: 1; transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* × ボタン */
+.close-btn {
+  position: absolute; top: 25px; right: 70px;
+  font-size: 50px; border: none; background: none;
+  color: white; cursor: pointer;
+}
+
+/* メニュー内リンク */
+.menu ul { list-style: none; padding: 0 0 0 12px; text-align: left; }
+.menu a { color: white; text-decoration: none; font-size: 28px; 
+font-family: Georgia, 'Times New Roman', Times, serif;}
+
+/* メニュー hr（伸びる） */
+.menu hr {
+  border: none; height: 1px; background: white;
+  width: 0; transition: width .8s ease-out; margin: 20px 0;
+}
+
+    .page{
+        width:100vw;
+        height: 100vh;
+        position: relative;
+
+    }
+    .text-1 {
+    font-size: 100px;
+    padding: 19px;
+    margin: 0;
+    font-family: 'Anton', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+    transition: transform 0.8s ease, opacity 0.8s ease; /* 速度を少し長くしてスムーズに */
+    transform: translateY(50px); /* 初期位置: 下に50px */
+    opacity: 0; /* 初期は透明 */
+}
+
+.text-1.active {
+    transform: translateY(0); /* 元の位置に移動 */
+    opacity: 1; /* 完全に表示 */
+}
+
+    .text-2{
+        text-align: center;
+        padding-top: 100px;
+        padding-right: 300px;
+        padding-bottom: 12px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        margin-left: 0;
+          transition: transform 0.8s ease, opacity 0.8s ease; /* 速度を少し長くしてスムーズに */
+    transform: translateY(50px); /* 初期位置: 下に50px */
+    opacity: 0; /* 初期は透明 */
+    }
+    .text-2.active {
+    transform: translateY(0); /* 元の位置に移動 */
+    opacity: 1; /* 完全に表示 */
+}
+    .text-3{
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            transition: transform 0.8s ease, opacity 0.8s ease; /* 速度を少し長くしてスムーズに */
+    transform: translateY(50px); /* 初期位置: 下に50px */
+    opacity: 0; /* 初期は透明 */
+
+    }
+     .text-3.active {
+    transform: translateY(0); /* 元の位置に移動 */
+    opacity: 1; /* 完全に表示 */
+}
+    .river{
+        position: absolute;
+        top:335px;
+        left: 60%;
+        width: 300px;
+        height: 180px;
+        transition: transform 0.8s ease, opacity 0.8s ease; /* 速度を少し長くしてスムーズに */
+    transform: translateY(50px); /* 初期位置: 下に50px */
+    opacity: 0; /* 初期は透明 */
+    }
+    .river.active {
+    transform: translateY(0); /* 元の位置に移動 */
+    opacity: 1; /* 完全に表示 */
+}
+    .street{
+        position: absolute;
+        top:335px;
+        width: 300px;
+        left:40%;
+        height: 180px;
+          transition: transform 0.8s ease, opacity 0.8s ease; /* 速度を少し長くしてスムーズに */
+    transform: translateY(50px); /* 初期位置: 下に50px */
+    opacity: 0; /* 初期は透明 */
+        
+
+    }
+        .street.active {
+    transform: translateY(0); /* 元の位置に移動 */
+    opacity: 1; /* 完全に表示 */
+}
+    .page2{
+        width:100vw;
+        height: 100vh;
+        position: relative;
+
+    }
+    
+    .typewriter {
+        position: absolute;
+        left:200px;
+       font-family: 'Anton', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+        font-size: 90px;
+        line-height: 0.5;
+        margin-right: 20px;
+        margin: 0 30px;
+        z-index: 999;
+        color: rgb(24, 23, 23);
+
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid rgb(226, 3, 3); /* タイプカーソル */
+    width: fit-content;
+    opacity: 0; /* 初期は非表示、スクロールで出す */
+    transition: opacity 0.2s ease;
+}
+
+.typewriter.active {
+    opacity: 1;
+}
+
+    .subway{
+        padding-top: 30px;
+        padding-left: 30px;
+        width:640px;
+        height:auto;
+         transition: transform 0.8s ease, opacity 0.8s ease; /* 速度を少し長くしてスムーズに */
+    transform: translateY(50px); /* 初期位置: 下に50px */
+    opacity: 0; /* 初期は透明 */
+    }
+    .subway.active {
+    transform: translateY(0); /* 元の位置に移動 */
+    opacity: 1; /* 完全に表示 */
+}
+    
+    .newyork{
+        position: absolute;
+        width: 330px;
+        height: 240px;
+        top: 80%;
+    }
+    .page3{
+        position: relative;
+        height: 80vh;
+    }
+    .text-5{
+         font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+         font-weight: bold;
+    }
+     .page3 { max-width:900px; margin:0 auto; }
+
+  .text-5{
+    font-size:18px;
+    padding: 12px;
+    line-height:1.8;
+    color:#111;
+    display:inline-block; /* 必要に応じて調整 */
+
+    cursor:default;
+    user-select:none;
+    white-space:pre-wrap; /* 改行を保つ */
+  }
+
+  /* 各文字用の初期スタイル */
+  .text-5 .char{
+    display:inline-block;
+    will-change: transform, opacity;
+    transition: transform 400ms cubic-bezier(.2,.8,.2,1),
+                opacity 300ms linear;
+    transform-origin:50% 50%;
+  }
+
+  /* 飛び散った状態（JSで付与） */
+  .text-5.scatter .char{
+    /* transitionは上で定義。実際の位置はインライン style で与える */
+  }
+
+  /* 細かい演出：戻る時に少しバウンドする感じ */
+  .text-5.restore .char{
+    transition-timing-function: cubic-bezier(.175,.885,.32,1.275);
+  }
+    .incafe{
+        position: absolute;
+        left: 7%;
+        width: 92%;
+        padding-top: 160px;
+        
+    }
+    footer {
+        background: rgb(17, 17, 17);
+        padding: 60px;
+        margin-top: 300px;;
+        text-align: left;
+        color: rgb(243, 245, 236);
+    }
+   @media(max-width:760px){
+    .text-1{
+        text-align: center;
+        font-size:60px;
+    }
+    .text-2{
+        color: transparent;
+        font-weight: bold;
+    }
+    .text-3{
+        position: absolute;
+        top: 100px;
+    }
+
+    .river{
+        position: absolute;
+        left: 8%;
+        top: 50%;
+        transform: translateX(-50%);
+        width: 80%; /* 必要に応じて幅調整 */
+        height: 170px; /* 高さを自動調整 */
+        margin: 0;
+        padding: 0;
+          transition: transform 0.8s ease, opacity 0.8s ease; /* 速度を少し長くしてスムーズに */
+    transform: translateY(50px); /* 初期位置: 下に50px */
+    opacity: 0; /* 初期は透明 */
+    }
+        .river.active {
+    transform: translateY(0); /* 元の位置に移動 */
+    opacity: 1; /* 完全に表示 */
+}
+        .typewriter {
+        position: absolute;
+        left: 8%;
+        top:20%;
+        font-family: 'Anton', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+        font-size: 24px;
+        padding: 0;
+        margin: 0;
+        z-index: 999;
+
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid black; /* タイプカーソル */
+    width: fit-content;
+    opacity: 0; /* 初期は非表示、スクロールで出す */
+    transition: opacity 0.4s ease;
+}
+    .street{
+        position: absolute;
+        left: 8%;
+        top: 80%; /* riverの下に配置したい場合 */
+        transform: translateX(-50%);
+        width: 80%; /* 必要に応じて幅調整 */
+        height: 170px;
+        margin: 0;
+        padding: 0;
+        padding-top: 0;
+        
+               transition: transform 0.8s ease, opacity 0.8s ease; /* 速度を少し長くしてスムーズに */
+    transform: translateY(50px); /* 初期位置: 下に50px */
+    opacity: 0; /* 初期は透明 */
+    }
+        .street.active {
+    transform: translateY(0); /* 元の位置に移動 */
+    opacity: 1; /* 完全に表示 */
+}
+    
+    
+    .page2{
+        width: 100%;
+        height: 500px;
+        
+
+    }
+    h1{
+        font-size: large;
+        position: absolute;
+        top:20%;
+        text-align: left;
+        font-size: 40px;
+        right: 700px;
+        z-index: 999;
+}
+ .subway{
+    position: absolute;
+    top:32%;
+    width:250px
+
+ }
+ footer {
+        background: rgb(8, 8, 8);
+        padding: 40px;
+        margin-top:0px;
+        font-size: 8px;
+        text-align: left;
+        color: rgb(243, 245, 236);
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+        .incafe{
+        text-align: left;
+        padding-top: 100%;
+        width:36%;
+        
+        
+    }
+.street {
+    opacity: 1 !important;                 /* 透明にならない */
+  
+    z-index: 9999 !important;              /* 他の画像に隠れない */
+            /* 絶対に画面内に表示 */
+}
+
+</style>
+</head>
+
+<script>
+    // ===== ハンバーガー開く =====
+  hamburger.addEventListener("click", ()=>{
+    menu.classList.add("active");
+    hamburger.style.opacity = "0";
+    document.querySelectorAll(".menu hr").forEach(hr=>hr.style.width="40%");
+  });
+
+  // ===== ハンバーガー閉じる =====
+  closeBtn.addEventListener("click", ()=>{
+    menu.classList.remove("active");
+    hamburger.style.opacity = "1";
+    document.querySelectorAll(".menu hr").forEach(hr=>hr.style.width="0");
+  });
+
+  // ===== hr スクロール伸び =====
+  const hrs = document.querySelectorAll("section hr");
+  const hrObserver = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.style.width="98%";
+        hrObserver.unobserve(e.target);
+      }
+    });
+  });
+  hrs.forEach(hr=>hrObserver.observe(hr));
+
+window.addEventListener('DOMContentLoaded', () => {
+    const text1 = document.querySelector('.text-1');
+    const triggerPoint = window.innerHeight * 0.8; // 発火ポイント
+    const textTop = text1.getBoundingClientRect().top;
+
+    if(textTop < triggerPoint){
+        text1.classList.add('active');
+    } else {
+        text1.classList.remove('active');
+    }
+});
+window.addEventListener('DOMContentLoaded', () => {
+    const text1 = document.querySelector('.river');
+    const triggerPoint = window.innerHeight * 0.8; // 発火ポイント
+    const textTop = text1.getBoundingClientRect().top;
+
+    if(textTop < triggerPoint){
+        text1.classList.add('active');
+    } else {
+        text1.classList.remove('active');
+    }
+});
+window.addEventListener('DOMContentLoaded', () => {
+    const text1 = document.querySelector('.street');
+    const triggerPoint = window.innerHeight * 0.8; // 発火ポイント
+    const textTop = text1.getBoundingClientRect().top;
+
+    if(textTop < triggerPoint){
+        text1.classList.add('active');
+    } else {
+        text1.classList.remove('active');
+    }
+});
+window.addEventListener('DOMContentLoaded', () => {
+    const text1 = document.querySelector('.text-3');
+    const triggerPoint = window.innerHeight * 0.8; // 発火ポイント
+    const textTop = text1.getBoundingClientRect().top;
+
+    if(textTop < triggerPoint){
+        text1.classList.add('active');
+    } else {
+        text1.classList.remove('active');
+    }
+});
+window.addEventListener('scroll', () => {
+    const text1 = document.querySelector('.subway');
+    const triggerPoint = window.innerHeight * 0.8; // 発火ポイント
+    const textTop = text1.getBoundingClientRect().top;
+
+    if(textTop < triggerPoint){
+        text1.classList.add('active');
+    } else {
+        text1.classList.remove('active');
+    }
+});
+window.addEventListener('scroll', () => {
+    const t = document.querySelector('.typewriter');
+    const triggerPoint = window.innerHeight * 0.8;
+
+    if (!t.classList.contains('active') && t.getBoundingClientRect().top < triggerPoint) {
+        t.classList.add('active');
+        startTypeWriter(t);
+    }
+});
+
+function startTypeWriter(element) {
+    const text = element.innerHTML;
+    const clean = text.replace(/<br>/g, "\n"); // br → 改行に一時変換
+    element.innerHTML = ""; // 空にする
+
+    let i = 0;
+    function type() {
+        if (i < clean.length) {
+            const char = clean[i];
+            if (char === "\n") {
+                element.innerHTML += "<br>"; // 改行を戻す
+            } else {
+                element.innerHTML += char;
+            }
+            i++;
+            setTimeout(type, 16); // ← 打つ速さ（数字を変えると速度調整）
+        }
+    }
+    type();
+}
+(function(){
+  const el = document.getElementById('target');
+
+  function splitTextIntoSpans(el){
+    // 既に分割済みなら何もしない
+    if(el.dataset.splitted === "true") return;
+    const text = el.textContent;
+    el.innerHTML = "";
+    for(let ch of text){
+      const span = document.createElement('span');
+      span.className = 'char';
+      // スペースは見えるように NBSP に変換
+      span.textContent = (ch === ' ') ? '\u00A0' : ch;
+      el.appendChild(span);
+    }
+    el.dataset.splitted = "true";
+  }
+
+  function randomBetween(min,max){ return Math.random()*(max-min)+min; }
+
+  function scatterAndReturn(el, options={}){
+    const chars = Array.from(el.querySelectorAll('.char'));
+    const {
+      maxX = 120,
+      maxY = 60,
+      maxRot = 35,
+      outDuration = 10,        // 各文字の "飛ぶ" にかける時間（CSS transitionで返すのでここは遅延）
+      stay = 5,               // 散らばってから戻るまでの待ち時間（ms）
+      delayBetweenChars = 1    // 文字ごとのズレ (stagger)
+    } = options;
+
+    el.classList.add('scatter');
+    el.classList.remove('restore');
+
+    // まず短いトランジションで飛ばす（JSで直接 transform を与える）
+    chars.forEach((span, i) => {
+      // ランダムな方向へ（±）
+      const dx = (Math.random() < 0.5 ? -1 : 1) * randomBetween(10, maxX);
+      const dy = (Math.random() < 0.5 ? -1 : 1) * randomBetween(5, maxY);
+      const rot = (Math.random() < 0.5 ? -1 : 1) * randomBetween(5, maxRot);
+      const delay = i * delayBetweenChars;
+
+      // 一旦即時にスタイルをセット（ただし遅延で実行して"飛ぶ"感を出す）
+      setTimeout(()=> {
+        // 透明にして手前/奥っぽくする
+        span.style.transitionDuration = (outDuration)+'ms';
+        span.style.transform = `translate(${dx}px, ${dy}px) rotate(${rot}deg) scale(${randomBetween(0.85,1.05)})`;
+        span.style.opacity = '0';
+      }, delay);
+    });
+
+    // すぐ戻す（stay後に戻る）。戻りは少し長めでイーズアウト（CSSで定義）
+    const totalStagger = chars.length * delayBetweenChars;
+    const whenToRestore = totalStagger + stay;
+
+    setTimeout(()=>{
+      el.classList.remove('scatter');
+      el.classList.add('restore');
+      chars.forEach((span, i) => {
+        const delay = i * (delayBetweenChars/2);
+        setTimeout(()=> {
+          // クリアして元の位置に戻る（CSS transitionが滑らかにしてくれる）
+          span.style.transitionDuration = '420ms';
+          span.style.transform = '';
+          span.style.opacity = '1';
+        }, delay);
+      });
+    }, whenToRestore);
+  }
+
+  // 初期化
+  splitTextIntoSpans(el);
+
+  // ページロード時に一度アニメーション（お好みでコメントアウト）
+  window.addEventListener('load', ()=> {
+    scatterAndReturn(el, { maxX:140, maxY:70, maxRot:28, outDuration:220, stay:160, delayBetweenChars:8 });
+  });
+
+  // ホバーでも発動（マウスが乗ったらサッと散って戻る）
+  let hoverLocked = false;
+  el.addEventListener('mouseenter', ()=> {
+    if(hoverLocked) return;
+    hoverLocked = true;
+    scatterAndReturn(el, { maxX:90, maxY:40, maxRot:18, outDuration:160, stay:120, delayBetweenChars:6 });
+    // 再発動までのクールダウン
+    setTimeout(()=> hoverLocked = false, 700);
+  });
+
+  // タップ（スマホ）対応：タップで発動
+  el.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    if(hoverLocked) return;
+    hoverLocked = true;
+    scatterAndReturn(el, { maxX:90, maxY:40, maxRot:18, outDuration:160, stay:120, delayBetweenChars:6 });
+    setTimeout(()=> hoverLocked = false, 700);
+  }, {passive:false});
+
+})();
+
+</script>
+</body>
+
+</html>

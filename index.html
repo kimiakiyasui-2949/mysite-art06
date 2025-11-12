@@ -1,494 +1,286 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-   html, body {
-      margin: 0;
-      padding: 0;
-      background-color:#e3ddd0
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<title>Portfolio</title>
+<section class="video-section">
+  <body>
+    <div id="intro"><p class="text-9">infomation</p></div>
+  <header>
+  <div id="hamburger" class="hamburger">☰</div>
+  <nav id="menu" class="menu">
+    <div id="closeBtn" class="close-btn">×</div>
+    <ul>
       
-    }
-    #intro {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: black;
-  z-index: 9999; /* 最前面 */
+      <li><a href="works.html">WORKS</a></li><hr>
+      <li><a href="works-2.html">ABOUT</a></li><hr>
+      
+  
+    </ul>
+  </nav>
+</header>
+    
+  <div class="info">
+    <h2 class="text-6">kento,s would wide infomation photo</h2>
+  </div>
+  <video src="sports.mp4" muted autoplay loop class="video"></video>
+</section>
+
+<h1>indivisual a day in life<br>frrd-in a sports mode sp fast</h1>
+<hr>
+<div class="main">
+<video src="shoot.mp4"muted autoplay loop class="video-2"></video>
+<p class="text-1">inside</p>
+<hr>
+<p class="text-2">support by natural remake</p>
+</div>
+<div class="info-2">
+    <h2 class="text-4">kento,s would wide infomation photo-2
+        indibisual personarity is rightand
+        stay in New York would wide
+    </h2>
+</div>
+ <div class="slideshow">
+    <img src="kyoto.jpg" class="slide active">
+    <img src="black.jpg" class="slide">
+    <img src="ring.jpg" class="slide">
+  </div>
+
+<footer>
+  <p class="text-7">01 position</p>
+  <p>kimiaki yasui</p>
+  <p>imagination skill and intersting about sky</p>
+</footer>
+<style>
+  /* ===== intro ===== */
+#intro {
+  position: fixed; top:0; left:0;
+  width: 100vw; height: 100vh;
+  background: black;
+  padding-top: 14px;
+  display: flex; justify-content: center; 
+  color: white; font-size: 20px;
+  z-index: 9999;
   opacity: 1;
-  transition: opacity 2s ease; /* フェードアウト時間 */
+  transition: opacity 2s ease;
 }
 #intro.fade-out {
   opacity: 0;
-  pointer-events: none; /* フェードアウト後にクリックなどをブロックしない */
+  pointer-events: none;
 }
-.text-9{
-  color: aliceblue;
-  text-align: center;
-}
-
-
-    header {
-      background-color: rgb(26, 25, 25);
-      padding: 20px;
-      text-align: right;
-      color: azure;
-      
-    }
-    
-
-    .text-2 {
-      position: relative;
-    }
-    section hr {
-  border: none;
-  height: 2px;
-  background-color: black;
-  width: 0; /* 初期は幅0 */
-  transition: width 1s ease-out;
-  margin: 50px 0;
-}
-
     .video {
-      width: 100vw;
-    }
-    /* ------------------------------
-   ハンバーガーメニュー
------------------------------- */
-
-/* 三本線（右上） */
-.hamburger {
-  font-size: 32px;
-  cursor: pointer;
-  color: white;
-  position: absolute;
-  top: 22px;
-  right: 25px;
-  z-index: 9999;
-  transition: opacity .4s ease;
+  display: block;
+  margin: 0 auto;
+  width: 80%;      /* 好みに応じて調整 */
 }
-
-/* メニュー全体（最初は隠れてる） */
+    header {
+  background-color: #1a1919;
+  padding: 40px;
+  text-align: right;
+  position: relative;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+/* ===== メニュー ===== */
 .menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
+  position: fixed; top: 0; left: 0;
+  width: 100%; height: 100vh;
   background: rgba(20,20,20,0.96);
   color: white;
-  opacity: 0;
-  transform: translateY(40px);
-  pointer-events: none;
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  z-index: 9998;
-  padding-top: 100px;
+  opacity: 0; transform: translateY(40px);
+  pointer-events: none; transition: .6s ease;
+  padding-top: 100px; z-index: 9998;
 }
-
-/* 浮かび上がる状態 */
 .menu.active {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1; transform: translateY(0);
   pointer-events: auto;
 }
 
-/* メニュー開いたら三本線を消す */
-header.menu-open .hamburger {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* 閉じる × */
+/* × ボタン */
 .close-btn {
-  position: absolute;
-  top: 25px;
-  right: 60px;
-  font-size: 50px;
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
+  position: absolute; top: 25px; right: 70px;
+  font-size: 50px; border: none; background: none;
+  color: white; cursor: pointer;
 }
 
 /* メニュー内リンク */
-.menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 30 0;
-  text-align: left;
-  margin-left: 26px;
-}
-
-.menu a {
-  color: white;
-  text-decoration: none;
-  font-size: 28px;
-  font-family: "DM Serif Display", serif;
-}
-/* ハンバーガーメニュー内の hr を伸ばす */
+.menu ul { list-style: none; padding: 0 0 0 12px; text-align: left; }
+.menu a { color: white; text-decoration: none; font-size: 28px; 
+font-family: Georgia, 'Times New Roman', Times, serif;}
+/* メニュー hr（伸びる） */
 .menu hr {
-  border: none;
-  height: 1px;
-  background-color: white;
-  width: 0;                 /* 初期幅 0 */
-  transition: width 0.8s ease-out;
-  margin: 20px 0;
+  border: none; height: 1px; background: white;
+  width: 0; transition: width .8s ease-out; margin: 20px 0;
 }
-
-
-
-
-    .text {
-      position: absolute;
-      top: 25%;
-      left: 50%;
-      opacity: 0.6;
-      padding: 0;
-      color: rgb(7, 7, 7);
-      font-size: 160px;
-      font-weight: bold;
-      font-family: "DM Serif Display", serif;
-      animation: rotateText 8s linear infinite;
-    }
-         
-@keyframes lineFlow {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(0); }
-}     /* ← 線の長さを指定 */
-
-
-    @keyframes rotateText {
-      0% { transform: translate(-50%, -50%) rotate(0deg); }
-      100% { transform: translate(-50%, -50%) rotate(360deg); }
-    }
 
     h1 {
-      text-align: left;
-      font-size: 60px;
-      font-family: "DM Serif Display", serif;
-      transform: translateY(30px);
-      animation: fadeInUp 3.0s ease-out forwards;
-      animation-timeline: view();
-    animation-range: entry 0% cover 50%;
+        font-size: 30px;
+          font-family: 'Anton', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     }
-
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(30px); }
-      100% { opacity: 1; transform: translateY(0); }
+    .main {
+        display: flex;
     }
-
- section img {
-  width: 360px;
-  padding: 30px;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.8s ease-out, transform 1.8s ease-out;
+    .video-2{
+        width:500px;
+        height: 300px;
+    }
+    .text-1{
+        font-size: 80px;
+        padding-left: 50px;
+           font-family: 'Anton', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+    .text-2 {    
+       font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;      /* ← 正しくクラス名を修正 */
+       font-weight: bold;
+  padding-right: 500px;   /* ← 左へ寄せた（100px → 40px）*/
+}
+.text-4{
+    font-size: 100px;
+          font-family: 'Anton', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-section img.visible {
-  opacity: 1;
-  transform: translateY(0);
+.text-6{
+    font-size: 100px;
+    font-family: 'Anton', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;,
+
 }
-
-
     
-    @keyframes slideIn {
-      0% { opacity: 0; transform: translateX(-50px); }
-      100% { opacity: 1; transform: translateX(0); }
-    }
 
-    /* --- 左端から右へ流れる <hr> --- */
-   
 
-  
 
-    .text-4 {
-      text-align: center;
-    }
+.video-section {
+  position: relative; /* sticky の親要素に必要 */
+}
 
-    .text-4 p {
-  font-size: 100px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-weight: bold;
-  color: rgb(9, 9, 9);
-  white-space: nowrap; /* 改行しない */
+.info {
+  position: sticky;
+  top: 50px; 
+  text-align: center;
+  z-index: 999;
+}
+/* スライドショー */
+.slideshow {
   position: relative;
-  animation: moveLeft 13s linear infinite; /* ループアニメーション */
-}
+  width: 80%;
+  max-width: 800px;
+  margin: 60px auto;
 
-@keyframes moveLeft {
-  0% {
-    transform: translateX(100vw); /* 右端からスタート */
-  }
-  100% {
-    transform: translateX(-100%); /* 左端まで移動 */
-  }
+  border-radius: 10px;
 }
-    .whether {
+.slideshow img {
+  
   width: 100%;
-  display: flex;          /* 横並びにする */
-  align-items: center;    /* 高さ中央揃え */
-  text-align: left;
-  width: 100%;
-  padding: 20px;
-  gap: 20px;              /* ビデオとテキストの間隔 */
+  height: auto;
+  
+  opacity: 1;
+  transition: opacity 1.5s ease-in-out;
 }
-
-.whether .photo {
-  width: 26%;             /* ビデオの幅 */
+.slideshow img.active {
+  opacity: 1;
+  z-index: 1;
 }
-.photo-2{
-  width:30%
-}
-
-.whether p {
-  position: absolute;
-  left:34%; 
-  padding-top: 290px;   /* absolute は不要 */
-  font-size: 21px;
-  font-family: "DM Serif Display", serif;
-
-}
-h1 {
-  transition: color 1.5s ease; /* なめらかに色が変わる */
-  color: #111;
-}
-
-h1.scrolled {
-  color: #dec318; /* 好きな色に変更 */
+text-7{
+  font-size: 30px;
 }
 
 
-  .text-5 h1{
-    padding: 29px;
+/* ===== footer ===== */
+footer {
+  margin-top: 12px;
+  background-color: rgb(37, 35, 32);
+  padding: 80px;
+  color: aliceblue;
+  font-size: 18px;
+}
+
+
+ @media(max-width:760px){
+  header{
+    padding: 24px;
   }
-h1:hover{
-  color: chocolate;
-
-}
-
-    footer {
-      background-color: rgb(37, 35, 32);
-      text-align: left;
-      padding: 150px;
-      color: aliceblue;
-      font-size: 12px;
-    }
     .text-6{
-      text-align: left;
-      font-size: 20px;
-    }
-
-    @media (max-width: 760px) {
-      header{
-        padding:10px;
-        font-size: 5px;
-      }
-      .menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 30 0;
-  text-align: left;
-  margin-left: 26px;
+    font-size: 10px;
+    font-family: 'Anton', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;,
 }
 
 
-.menu a {
-  color: white;
-  text-decoration: none;
-  font-size: 28px;
-  font-family: "DM Serif Display", serif;
+    .video-2{
+        width:120px
+    }
+    footer { padding:40px; font-size:8px; }
+
+    .text-1{
+        text-align: right;
+        padding-right: 30px;
+        font-size: 30px;
+    }
+      .text-2 {          /* ← 正しくクラス名を修正 */
+  padding-right: 10px;
+  padding-left: 10px;   /* ← 左へ寄せた（100px → 40px）*/
+    }
+    .text-4{
+    font-size: 30px;
+    font-family: 'Anton', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;,
 }
-      .text { font-size: 40px; }
-      h1 { font-size: 15px; text-align: center; }
-      section img { width: 100px; padding: 0; }
-      .text-4 p { font-size: 40px; }
-      footer { padding: 60px; }
-      .whether p {
-  position: absolute;
-  left:36%; 
-  padding-top: 46px;   /* absolute は不要 */
-  font-size: 8px;
-  font-weight: bold;
-  font-family: "DM Serif Display", serif;
-
+text-6{
+    font-size: 12px;
 }
- footer {
-      background-color: rgb(37, 35, 32);
-      text-align: left;
-      padding: 40px;
-      color: aliceblue;
-      font-size: 3px;
-    }
-    .text-6{
-      font-size: 12px;;
 
-    }
-    }
-  </style>
-</head>
-<body>
-   <div id="intro"><p class="text-9">intro</p></div> <!-- イントロ用 -->
-   <!-- ハンバーガーメニュー -->
-<div class="menu" id="menu">
-  <button class="close-btn" id="closeBtn">×</button>
-  <ul>
-    <li><a href="#">TOP</a></li>
-    <hr>
-    <li><a href="#">WORKS</a></li>
-    <hr>
-    <li><a href="#">ABOUT</a></li>
-    <hr>
-    <li><a href="#">CONTACT</a></li>
-    <hr>
-  </ul>
-</div>
-
-   <header>
- 
-  <div class="hamburger" id="hamburger">☰</div>
-</header>
-
-  
-  
-
-  <section class="text-2">
-    <video src="fashon.mp4" autoplay muted loop class="video"></video>
-    <p class="text">imagine</p>
-  </section>
-  
-
-  <section>
-    <h1>Style is a way to say who you are before you speak</h1>
-    <hr>
-    <h1>Beauty begins the moment you embrace yourself</h1>
-    <hr>
-    <h1>Seven moments of surprise unfolded on the street.</h1>
-    <hr>
-    <img src="kyoto.jpg">
-    <img src="mono.jpg">
-    <img src="street3.jpg">
-    <img src="aunt.jpg">
-  </section>
-
-  <section class="text-4">
-    <p>Pointless moments</p>
-  </section>
-
-  <div class="whether">
-    <video src="fashon-1.mp4" autoplay muted loop class="photo"></video>
-    <img src="show.jpg" class="photo-2">
-    <p> 01 sound garden</p>
     
-  </div>
-
-  <section class="text-5">
-    <h1>Style is a way to say who you are before you speak</h1>
-    <hr>
-    <h1>Beauty begins the moment you embrace yourself</h1>
-    <hr>
-    <h1>Seven moments of surprise unfolded on the street.</h1>
-    <hr>
-  </section>
-
-  <footer>
-    <p class="text-6"> 01 position</p>
-    <p>kimiaki yasui</p>
-    <p>imagination skill and intersting about sky</p>
-  </footer>
- <script>
-// ===== hr のアニメーション =====
-const hrs = document.querySelectorAll("section hr");
-
-const hrObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.width = "94%";
-      hrObserver.unobserve(entry.target);
-    }
-  });
-}, {
-  rootMargin: "0px 0px -20% 0px",
-  threshold: 0
-});
-
-hrs.forEach(hr => hrObserver.observe(hr));
-
-
-// ===== 画像フェードイン（section + whether） =====
-const images = document.querySelectorAll("section img");
-
-const animateImages = () => {
-  images.forEach((img, index) => {
-    const rect = img.getBoundingClientRect();
-    if(rect.top < window.innerHeight * 0.85 && !img.classList.contains("visible")){
-      // 遅延をつける
-      setTimeout(() => {
-        img.classList.add("visible");
-      }, index * 300); // 0.3秒ずつずらす
-    }
-  });
 }
 
-window.addEventListener("scroll", animateImages);
-window.addEventListener("load", animateImages);
+
+</style>
+<script>
 
 
-// ===== intro フェードアウト =====
-window.addEventListener("load", () => {
-  const intro = document.getElementById("intro");
-  setTimeout(() => {
+  // ===== イントロフェードアウト =====
+  setTimeout(()=>{
     intro.classList.add("fade-out");
-  }, 500);
-});
-// ===== ハンバーガーメニュー =====
-const hamburger = document.getElementById("hamburger");
-const menu = document.getElementById("menu");
-const closeBtn = document.getElementById("closeBtn");
-const header = document.querySelector("header");
-
-// ▶ 開く
-hamburger.addEventListener("click", () => {
-  menu.classList.add("active");
-  header.classList.add("menu-open");
-});
-
-// ▶ 閉じる
-closeBtn.addEventListener("click", () => {
-  menu.classList.remove("active");
-  header.classList.remove("menu-open");
-});
-// ▶ 開く
-hamburger.addEventListener("click", () => {
-  menu.classList.add("active");
-  header.classList.add("menu-open");
-
-  // hr を左→右へ伸ばす
-  document.querySelectorAll(".menu hr").forEach((hr) => {
-    hr.style.width = "50%";
+    setTimeout(()=>{
+      hamburger.style.opacity = "1";
+      hamburger.style.pointerEvents = "auto";
+    },2000);
+  },500);
+      // ===== ハンバーガー開く =====
+  hamburger.addEventListener("click", ()=>{
+    menu.classList.add("active");
+    hamburger.style.opacity = "0";
+    document.querySelectorAll(".menu hr").forEach(hr=>hr.style.width="40%");
   });
-});
 
-// ▶ 閉じる
-closeBtn.addEventListener("click", () => {
-  menu.classList.remove("active");
-  header.classList.remove("menu-open");
-
-  // 閉じたら幅を戻す
-  document.querySelectorAll(".menu hr").forEach((hr) => {
-    hr.style.width = "0";
+  // ===== ハンバーガー閉じる =====
+  closeBtn.addEventListener("click", ()=>{
+    menu.classList.remove("active");
+    hamburger.style.opacity = "1";
+    document.querySelectorAll(".menu hr").forEach(hr=>hr.style.width="0");
   });
-});
 
+  // ===== hr スクロール伸び =====
+  const hrs = document.querySelectorAll("section hr");
+  const hrObserver = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.style.width="98%";
+        hrObserver.unobserve(e.target);
+      }
+    });
+  });
+  hrs.forEach(hr=>hrObserver.observe(hr));
+function showNextSlide() {
+  slides[current].classList.remove("active");
+  current = (current + 1) % slides.length;
+  slides[current].classList.add("active");
+}
 
+// 3秒ごとに次の画像へ
+setInterval(showNextSlide, 3000);
 </script>
-
-
-
 
 </body>
 </html>
