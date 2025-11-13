@@ -3,27 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 <title>Portfolio</title>
 <style>
 /* ===== 基本 ===== */
 html, body {
   margin: 0; padding: 0;
-  background-color: #e3ddd0;
+  background-color: white;
   font-family: "DM Serif Display", serif;
+  overflow-x: hidden;   /* ← 横スクロールを完全に隠す */
+  width: 100%;
+  touch-action: pan-y;  /* モバイルで縦スクロールのみ許可（横フリックを抑止） */
 }
 
-
-
-/* ===== Header ===== */
-header {
-  background-color: #1a1919;
-  padding: 20px;
-  text-align: right;
-  position: relative;
-  color: white;
+.text-10{
+  position: absolute;
+  left: 43%;
+  bottom: 16px;
 }
 
-/* 三本線ハンバーガー */
+/*== Header ===== */
+  /* 三本線ハンバーガー */
 .hamburger {
   font-size: 32px;
   cursor: pointer;
@@ -32,8 +34,14 @@ header {
   transition: opacity .6s ease;
   z-index: 9999;
 }
+header {
+  background-color: #1a1919;
+  padding: 40px;
+  text-align: right;
+  position: relative;
+  color: white;
+}
 
-/* ===== メニュー ===== */
 .menu {
   position: fixed; top: 0; left: 0;
   width: 100%; height: 100vh;
@@ -57,7 +65,8 @@ header {
 
 /* メニュー内リンク */
 .menu ul { list-style: none; padding: 0 0 0 12px; text-align: left; }
-.menu a { color: white; text-decoration: none; font-size: 28px; }
+.menu a { color: white; text-decoration: none; font-size: 28px; 
+font-family: Georgia, 'Times New Roman', Times, serif;}
 
 /* メニュー hr（伸びる） */
 .menu hr {
@@ -76,8 +85,9 @@ header {
 
 /* ===== h1 / スクロールアニメ ===== */
 h1 {
-  font-size: 60px; opacity: 0; transform: translateY(30px);
+  font-size: 50px; opacity: 0; transform: translateY(30px);
   animation: fadeInUp 3s ease-out forwards;
+   font-family: 'Anton', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
@@ -114,7 +124,8 @@ section img {
 }
 
 /* ===== Hero video ===== */
-.video { width: 100%; height: auto; }
+.video { width: 80%; height: auto; 
+padding-left: 10%;}
 
 /* ===== footer ===== */
 footer {
@@ -126,21 +137,21 @@ footer {
 
 /* ===== スマホ表示 ===== */
 @media (max-width:760px){
-  .text { font-size: 36px; }
-  h1 { font-size: 15px; text-align: center; }
+  .text { font-size: 50px;
+  color: white; }
+  h1 { font-size: 30px; text-align: center; }
   section img { width: 
-    78px; padding: 2px; }
+    300px; padding: 24px; }
   .text-4 p { font-size: 40px; }
-  .whether p { font-size: 8px; left: 350px; padding-top:70px; }
-  .photo { width: 30%; height: auto; }
-  .video { width: 100%; height: auto; }
+  .whether p { font-size: 8px; padding-top:70px; }
+  .photo { width: 5%; height: auto; }
+  .video { width: 80%; height: auto; }
   footer { padding:40px; font-size:8px; }
   position: absolute; top: 
   font-size: 46px; border: none; background: none;
   color: white; cursor: pointer;
-  
-  
-  
+ 
+
   padding-top: 320px;
 }
  .text-9{
@@ -167,17 +178,19 @@ footer {
     <div id="closeBtn" class="close-btn">×</div>
     <ul>
       <li><a href="index.html">HOME</a></li><hr>
-      <li><a href="works-2.html">WORKS</a></li><hr>
+      <li><a href="works-2.html">ABOUT</a></li><hr>
      
 
       
     </ul>
+    
   </nav>
+  <p class="text-10">WORKS</p>
 </header>
 
 <section class="text-2">
-  <video src="fashon.mp4" autoplay muted loop class="video"></video>
-  <p class="text">imagine</p>
+  <img src="airport.jpg"class="video">
+  
 </section>
 
 <section>
@@ -205,7 +218,7 @@ footer {
 </section>
 
 <footer>
-  <p class="text-6">01 position</p>
+  <p class="text-6">02 position</p>
   <p>kimiaki yasui</p>
   <p>imagination skill and intersting about sky</p>
 </footer>

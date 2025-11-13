@@ -22,12 +22,13 @@
   
     </ul>
   </nav>
+  <p class="text-10">infomation</p>
 </header>
     
   <div class="info">
     <h2 class="text-6">kento,s would wide infomation photo</h2>
   </div>
-  <video src="sports.mp4" muted autoplay loop class="video"></video>
+  <video src="title-3.mp4" muted autoplay loop class="video"></video>
 </section>
 
 <h1>indivisual a day in life<br>frrd-in a sports mode sp fast</h1>
@@ -46,6 +47,7 @@
 </div>
  <div class="slideshow">
     <img src="kyoto.jpg" class="slide active">
+    
     <img src="black.jpg" class="slide">
     <img src="ring.jpg" class="slide">
   </div>
@@ -60,6 +62,13 @@
     padding: 0;
     margin: 0;
   }
+  
+.text-10{
+  font-family: "DM Serif Display", serif;
+  position: absolute;
+  left: 47%;
+  bottom: 18px;
+}
   /* ===== intro ===== */
 #intro {
   position: fixed; top:0; left:0;
@@ -71,6 +80,7 @@
   z-index: 9999;
   opacity: 1;
   transition: opacity 2s ease;
+  font-family: "DM Serif Display", serif;
 }
 #intro.fade-out {
   opacity: 0;
@@ -99,6 +109,7 @@
   opacity: 0; transform: translateY(40px);
   pointer-events: none; transition: .6s ease;
   padding-top: 100px; z-index: 9998;
+  font-family: "DM Serif Display", serif;
 }
 .menu.active {
   opacity: 1; transform: translateY(0);
@@ -198,21 +209,30 @@ text-7{
 
 /* ===== footer ===== */
 footer {
-  margin-top: 12px;
+  margin-top: 24px;
   background-color: rgb(37, 35, 32);
-  padding: 80px;
+  padding: 200px;
   color: aliceblue;
-  font-size: 18px;
+  font-size: 24px;
 }
 
 
  @media(max-width:760px){
+  .text-10{
+  position: absolute;
+  left: 35%;
+  bottom: 14px;
+  font-size: 20px;
+}
   header{
     padding: 24px;
   }
     .text-6{
     font-size: 10px;
     font-family: 'Anton', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;,
+}
+h2 {
+  font-family: Georgia, 'Times New Roman', Times, serif;}
 }
 
 
@@ -260,6 +280,12 @@ text-6{
     hamburger.style.opacity = "0";
     document.querySelectorAll(".menu hr").forEach(hr=>hr.style.width="40%");
   });
+   // ===== ハンバーガー開く =====
+  hamburger.addEventListener("click", ()=>{
+    menu.classList.add("active");
+    hamburger.style.opacity = "0";
+    document.querySelectorAll(".menu hr").forEach(hr=>hr.style.width="40%");
+  });
 
   // ===== ハンバーガー閉じる =====
   closeBtn.addEventListener("click", ()=>{
@@ -279,6 +305,7 @@ text-6{
     });
   });
   hrs.forEach(hr=>hrObserver.observe(hr));
+
 function showNextSlide() {
   slides[current].classList.remove("active");
   current = (current + 1) % slides.length;
