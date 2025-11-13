@@ -31,7 +31,7 @@
   <video src="title-3.mp4" muted autoplay loop class="video"></video>
 </section>
 
-<h1>indivisual a day in life<br>frrd-in a sports mode sp fast</h1>
+<h2 id="typewriter"1>indivisual a day in life<br>frrd-in a sports mode sp fast</h1>
 <hr>
 <div class="main">
 <video src="shoot.mp4"muted autoplay loop class="video-2"></video>
@@ -60,13 +60,13 @@
 <style>
    html,body{
     padding: 0;
-    margin: 0;
+    margin: 0;z
   }
   
 .text-10{
   font-family: "DM Serif Display", serif;
   position: absolute;
-  left: 47%;
+  left: 735px;
   bottom: 18px;
 }
   /* ===== intro ===== */
@@ -74,7 +74,7 @@
   position: fixed; top:0; left:0;
   width: 100vw; height: 100vh;
   background: black;
-  padding-top: 14px;
+  padding-top: 9px;
   display: flex; justify-content: center; 
   color: white; font-size: 20px;
   z-index: 9999;
@@ -147,14 +147,15 @@ font-family: Georgia, 'Times New Roman', Times, serif;}
     }
     .text-1{
         font-size: 80px;
-        padding-left: 50px;
+        padding-left: 1px;
            font-family: 'Anton', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     }
     .text-2 {    
        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;      /* ← 正しくクラス名を修正 */
-       font-weight: bold;
-  padding-right: 559px;   /* ← 左へ寄せた（100px → 40px）*/
-  margin-right: 4px;
+      
+       font-size: 40px;
+  padding-right: 1000px;   /* ← 左へ寄せた（100px → 40px）*/
+  margin-right: 700px;
 }
 .text-4{
     font-size: 100px;
@@ -163,11 +164,61 @@ font-family: Georgia, 'Times New Roman', Times, serif;}
 }
 
 .text-6{
-    font-size: 100px;
+    font-size: 120px;
     font-family: 'Anton', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;,
 
 }
     
+
+
+/* ===== タイプライターアニメーション ===== */
+#typewriter {
+  font-size: 30px;
+  font-family: 'Anton', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  padding-left: 12px;
+  padding-right: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid white; /* カーソルのような線 */
+  width: 0;
+  animation: typing 4s steps(40, end) forwards, blink .6s step-end infinite alternate;
+}
+
+
+/* 文字が1文字ずつ現れる */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* カーソルが点滅する */
+@keyframes blink {
+  from { border-color: transparent; }
+  to { border-color: white; }
+}
+/* ===== タイプライターアニメーション ===== */
+#typewriter {
+  font-size: 30px;
+  font-family: 'Anton', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  padding-left: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid white; /* カーソルのような線 */
+  width: 0;
+  animation: typing 4s steps(40, end) forwards, blink .6s step-end infinite alternate;
+}
+
+/* 文字が1文字ずつ現れる */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* カーソルが点滅する */
+@keyframes blink {
+  from { border-color: transparent; }
+  to { border-color: white; }
+}
 
 
 
@@ -217,11 +268,12 @@ footer {
 }
 
 
+
  @media(max-width:760px){
   .text-10{
   position: absolute;
-  left: 35%;
-  bottom: 14px;
+  left: 34%;
+  bottom: 15px;
   font-size: 20px;
 }
   header{
@@ -248,7 +300,8 @@ h2 {
     }
       .text-2 {          /* ← 正しくクラス名を修正 */
   padding-right: 10px;
-  padding-left: 10px;   /* ← 左へ寄せた（100px → 40px）*/
+  padding-left: 10px; 
+  font-size: 24px;  /* ← 左へ寄せた（100px → 40px）*/
     }
     .text-4{
     font-size: 30px;
@@ -258,7 +311,58 @@ text-6{
     font-size: 12px;
 }
 
-    
+/* ===== タイプライターアニメーション ===== */
+#typewriter {
+  font-size: 30px;
+  font-family: 'Anton', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  padding-left: 12px;
+  padding-right: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid white; /* カーソルのような線 */
+  width: 0;
+  animation: typing 4s steps(40, end) forwards, blink .6s step-end infinite alternate;
+}
+
+
+/* 文字が1文字ずつ現れる */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* カーソルが点滅する */
+@keyframes blink {
+  from { border-color: transparent; }
+  to { border-color: white; }
+}
+/* ===== タイプライターアニメーション ===== */
+#typewriter {
+  font-size: 30px;
+  font-family: 'Anton', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  padding-left: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid white; /* カーソルのような線 */
+  width: 0;
+  animation: typing 2.0s steps(40, end) forwards, blink .6s step-end infinite alternate;
+}
+
+/* 文字が1文字ずつ現れる */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* カーソルが点滅する */
+@keyframes blink {
+  from { border-color: transparent; }
+  to { border-color: white; }
+}
+
+text-2{
+  font-size: 12px;
+}
 }
 
 
@@ -314,6 +418,7 @@ function showNextSlide() {
 
 // 3秒ごとに次の画像へ
 setInterval(showNextSlide, 3000);
+
 </script>
 
 </body>
